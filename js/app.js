@@ -257,7 +257,7 @@ function enviarPedidoWhatsApp() {
     mensaje += `\n\n📍 *Dirección de entrega en Anserma:* [Escribe aquí tu dirección]`;
     mensaje += `\n💬 *Método de pago deseado:* [Efectivo / Nequi / Transfiya]`;
 
-    const url = `https://api.whatsapp.com/send?phone=573052016360&text=${encodeURIComponent(mensaje)}`;
+    const url = `https://api.whatsapp.com/send?phone=573218433983&text=${encodeURIComponent(mensaje)}`;
     window.open(url, '_blank');
 }
 
@@ -312,7 +312,7 @@ function cerrarAlertaAntojo() {
 
 function enviarAntojoEspecial() {
     const mensaje = "¡Hola Sabor a Pueblo! 👋 Tengo un antojo de un plato especial y me gustaría saber si me lo podrían preparar de forma personalizada...";
-    const url = `https://api.whatsapp.com/send?phone=573052016360&text=${encodeURIComponent(mensaje)}`;
+    const url = `https://api.whatsapp.com/send?phone=573218433983&text=${encodeURIComponent(mensaje)}`;
     window.open(url, '_blank');
 }
 

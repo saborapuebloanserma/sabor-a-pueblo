@@ -73,4 +73,4 @@ const platosSaborAPueblo = [
         categoria: "Entradas",
         imagen: "img/platos/antojito.webp"
     }
-];
+];  

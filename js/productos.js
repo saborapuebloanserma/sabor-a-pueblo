@@ -4,7 +4,7 @@ const platosSaborAPueblo = [
     {
         id: 1,
         nombre: "Fiambre #1",
-        descripcion: "Exquisita receta tradicional con papa, huevo, carne asada, chicharrón, arroz y tajada madura.",
+        descripcion: "Exquisita receta tradicional con papa, huevo, carne asada, chicharrón, arroz y tajada madura. Incluye gaseosa personal",
         precio: 17000,
         categoria: "Fiambres",
         imagen: "img/platos/fiambre1.webp"
@@ -12,7 +12,7 @@ const platosSaborAPueblo = [
     {
         id: 2,
         nombre: "Fiambre #2",
-        descripcion: "La combinación perfecta de arepa, chorizo, carne molida y el toque tradicional de la casa.",
+        descripcion: "La combinación perfecta de arepa, chorizo, carne molida y el toque tradicional de la casa. Incluye gaseosa personal",
         precio: 20000,
         categoria: "Fiambres",
         imagen: "img/platos/fiambre2.webp"
@@ -20,7 +20,7 @@ const platosSaborAPueblo = [
     {
         id: 3,
         nombre: "El Arriero",
-        descripcion: "Deliciosa carne asada o apanada, patacón crujiente, ensalada fresca, papa frita y limón.",
+        descripcion: "Deliciosa carne asada o apanada, patacón crujiente, ensalada fresca, papas a la francesa y limón.",
         precio: 15000,
         categoria: "Platos Fuertes",
         imagen: "img/platos/arriero.webp"
@@ -28,7 +28,7 @@ const platosSaborAPueblo = [
     {
         id: 4,
         nombre: "Sabor Casero",
-        descripcion: "Patacón crujiente acompañado de carne o pollo desmechado, queso derretido, hogao, maíz y 3 huevos, servido con platanito maduro.",
+        descripcion: "Patacón crujiente acompañado de carnes mixtas, queso derretido, hogao, maíz y tres huevos, servido con platanito maduro.",
         precio: 15000,
         categoria: "Especialidades",
         imagen: "img/platos/sabor-casero.webp"
@@ -36,7 +36,7 @@ const platosSaborAPueblo = [
     {
         id: 5,
         nombre: "Pataconcitos Mix",
-        descripcion: "Porción de 10 deliciosos pataconcitos acompañados de salchicha en salsa especial de la casa y huevos.",
+        descripcion: "Porción de 10 deliciosos pataconcitos acompañados de salchicha en salsa especial de la casa.",
         precio: 18000,
         categoria: "Para Compartir",
         imagen: "img/platos/patacon-mix.webp"
@@ -44,7 +44,7 @@ const platosSaborAPueblo = [
     {
         id: 6,
         nombre: "El Abastecedor",
-        descripcion: "Una explosión de sabor con chicharrón carnudo, arepa frita, papa frita y una fresca ensalada.",
+        descripcion: "Una explosión de sabor con chicharrón carnudo, arepa frita, papas a la francesa y una fresca ensalada.",
         precio: 14000,
         categoria: "Platos Fuertes",
         imagen: "img/platos/abastecedor.webp"
@@ -52,7 +52,7 @@ const platosSaborAPueblo = [
     {
         id: 7,
         nombre: "Adición Especial",
-        descripcion: "Perfecta combinación de torta de carne bien sazonada y arepa caliente.",
+        descripcion: "Perfecta combinación de torta de carne bien sazonada y arepa caliente. Incluye gaseosa personal",
         precio: 4000,
         categoria: "Adiciones",
         imagen: "img/platos/adicion.webp"
@@ -68,7 +68,7 @@ const platosSaborAPueblo = [
     {
         id: 9,
         nombre: "El Antojito",
-        descripcion: "Completo plato con patacón, arepa frita, chorizo de la casa y platanitos maduros.",
+        descripcion: "Completo plato con dos patacónes, arepa frita, chorizo de la casa y platanitos maduros.",
         precio: 12000,
         categoria: "Entradas",
         imagen: "img/platos/antojito.webp"

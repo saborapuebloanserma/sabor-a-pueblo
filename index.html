@@ -73,6 +73,47 @@
         </div>
     </div>
 
+    <section class="bg-white border-t border-b border-gray-100 py-12 px-4">
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <div class="space-y-3">
+            <h3 class="text-xl font-bold text-puebloBlue flex items-center gap-2">
+                🏠 <span>¿Quiénes Somos?</span>
+            </h3>
+            <p class="text-gray-600 leading-relaxed text-sm">
+                En <strong>Sabor a Pueblo</strong> nos apasiona rescatar y compartir la verdadera sazón tradicional. Preparamos cada plato con ingredientes frescos, amor y el toque casero que nos transporta a nuestras raíces. ¡Queremos que cada bocado sea una experiencia memorable para ti y tu familia!
+            </p>
+        </div>
+
+        <div class="space-y-3">
+            <h3 class="text-xl font-bold text-puebloBlue flex items-center gap-2">
+                ⏰ <span>Horarios y Pedidos</span>
+            </h3>
+            
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-3 rounded mb-3">
+                <p class="text-xs text-amber-800 font-bold uppercase tracking-wider">
+                    📝 ¡TRABAJAMOS BAJO PEDIDO!
+                </p>
+                <p class="text-xs text-amber-700 mt-1">
+                    <strong>Lunes y Martes:</strong> Tomamos tus pedidos con antelación. Si te antojas de unos deliciosos platos para disfrutar de miércoles a domingo, ¡escríbenos con tiempo para agendar tu horario!
+                </p>
+            </div>
+
+            <ul class="text-gray-600 text-sm space-y-2">
+                <li class="flex justify-between border-b border-gray-50 pb-1">
+                    <span class="font-medium text-gray-700">Miércoles a Domingo:</span> 
+                    <span class="font-semibold text-gray-800">11:00 AM - 10:00 PM</span>
+                </li>
+                <li class="flex justify-between text-gray-400">
+                    <span>Lunes y Martes:</span> 
+                    <span>Solo toma de pedidos agendados</span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
     <footer class="bg-puebloDark text-blue-200/70 text-center py-6 text-xs mt-12 px-4">
         <img src="img/STIKERS_SABOR_A_PUEBLO.webp" class="h-12 w-12 mx-auto mb-2 rounded-full border-2 border-puebloYellow object-cover">
         <p class="font-bold text-white text-sm">Sabor a Pueblo</p>
@@ -136,6 +177,36 @@
                     <span class="text-gray-800 font-extrabold text-base">Total a pagar:</span>
                     <span id="modal-total" class="font-extrabold text-2xl text-puebloBlue">$0</span>
                 </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 my-3 text-xs text-blue-800 flex items-start gap-2">
+    <span>💡</span>
+    <p>
+        <strong>Recuerda:</strong> Preparamos tu comida con amor y bajo pedido para garantizar la mejor frescura.
+    </p>
+</div>
+
+<div class="bg-gray-50 rounded-lg p-3 my-4 border border-gray-200">
+    <h4 class="text-xs font-bold text-gray-700 uppercase tracking-wider mb-2 flex items-center gap-1">
+        💳 Medios de Pago Autorizados
+    </h4>
+    <div class="grid grid-cols-1 gap-2 text-xs text-gray-600">
+        
+        <div class="bg-white p-2.5 rounded border border-gray-100 shadow-sm">
+            <span class="font-semibold text-gray-800 block">💵 Efectivo</span>
+            <span class="text-gray-500 text-[11px]">Si pagas en efectivo, indícanos en WhatsApp si requieres devuelta y de cuánto.</span>
+        </div>
+
+        <div class="bg-white p-2.5 rounded border border-gray-100 shadow-sm">
+            <div class="flex justify-between items-center mb-1">
+                <span class="font-semibold text-puebloBlue">📱 Transferencia (Bancolombia)</span>
+                <span class="text-[10px] text-green-600 bg-green-50 px-1.5 py-0.5 rounded font-bold">Activo</span>
+            </div>
+            <p class="text-gray-700 font-medium">Llave: <code class="bg-gray-100 px-1 rounded text-red-600 font-mono">1054867286</code></p>
+            <span class="text-gray-400 text-[11px] block mt-0.5">A nombre de: Nicol Alzate - Banco Cooprocal</span>
+        </div>
+
+    </div>
+</div>
                 
                 <div class="grid grid-cols-2 gap-3 pt-2">
                     <button onclick="vaciarCarrito()" class="border border-red-200 text-red-500 hover:bg-red-50 py-3 rounded-xl text-xs font-bold transition-all">

@@ -256,6 +256,14 @@ function enviarPedidoWhatsApp() {
     mensaje += `\n------------------------`;
     mensaje += `\n\n📍 *Dirección de entrega en Anserma:* [Escribe aquí tu dirección]`;
     mensaje += `\n💬 *Método de pago deseado:* [Efectivo / Nequi / Transfiya]`;
+    
+    // ... (Debajo de donde sumas el Total y el costo del Domicilio al mensaje) ...
+
+mensaje += `\n\n📌 *DATOS DE ENTREGA Y PAGO*`;
+mensaje += `\n*• Método de Pago:* (Efectivo / Transferencia)`;
+mensaje += `\n*• ¿Requiere cambio?:* (Sí, de cuánto / No)`;
+mensaje += `\n*• Día y Hora de entrega:* (Miércoles a Domingo de 11am a 10pm)`;
+mensaje += `\n*• Dirección:* _________________`;
 
     const url = `https://api.whatsapp.com/send?phone=573218433983&text=${encodeURIComponent(mensaje)}`;
     window.open(url, '_blank');

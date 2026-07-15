@@ -256,7 +256,7 @@ function enviarPedidoWhatsApp() {
     mensaje += `\n------------------------`;
     mensaje += `\n\n📍 *Dirección de entrega en Anserma:* [Escribe aquí tu dirección]`;
     mensaje += `\n💬 *Método de pago deseado:* [Efectivo / Nequi / Transfiya]`;
-    
+
     // ... (Debajo de donde sumas el Total y el costo del Domicilio al mensaje) ...
 
 mensaje += `\n\n📌 *DATOS DE ENTREGA Y PAGO*`;
@@ -278,6 +278,14 @@ const mensajesEspontaneos = [
     "🛵 ¡Domicilios activos en toda Anserma! Pide antes de que cierre la cocina.",
     "✨ Sabor que enamora, tradición que perdura.",
     "🍛 ¡Saliendo un pedido del espectacular Arriero para el barrio El Pensil!"
+];
+
+// Array con los anuncios flotantes para rotar en la parte superior
+const anunciosFlotantes = [
+    "✨ Hola, ¿ya te decidiste? No lo pienses tanto, lo vas a disfrutar.",
+    "🥟 ¿Ya probaste nuestras empanadas? ¡Pide tu antojo ya!",
+    "🎉 ¡Aprovecha la PROMO de bienvenida por compras superiores a $25.000!",
+    "🏠 ¿Buscas algo diferente? Nuestra cocina tradicional es para TI."
 ];
 
 function gestionarAlertaFlotante() {

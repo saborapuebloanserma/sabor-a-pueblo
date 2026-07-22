@@ -58,13 +58,18 @@ const platosSaborAPueblo = [
         imagen: "img/platos/adicion.webp"
     },
     {
-        id: 8,
-        nombre: "Empanadas",
-        descripcion: "Deliciosas empanadas crocantes, rellenas de la mejor sazón de la casa.",
-        precio: 2000,
-        categoria: "Entradas",
-        imagen: "img/platos/empanadas.webp"
-    },
+    id: 8,
+    nombre: "Empanadas Crocantes",
+    descripcion: `Deliciosas empanadas crocantes, rellenas de la mejor sazón de la casa.
+
+• C/U: $2.000 (Sin bebida)
+• Canasta x7: $12.000 (Sin bebida)
+• Canasta x10: $18.000 (Sin bebida)
+• Canasta x15: $28.000 (🥤 ¡INCLUYE GASEOSA!)`,
+    precio: 2000,
+    categoria: "Entradas",
+    imagen: "img/platos/empanadas.webp"
+},
     {
         id: 9,
         nombre: "El Antojito",

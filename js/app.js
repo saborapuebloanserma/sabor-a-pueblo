@@ -254,8 +254,7 @@ function enviarPedidoWhatsApp() {
     
     mensaje += `\n💵 *Total a pagar:* $${totalPagar.toLocaleString()}`;
     mensaje += `\n------------------------`;
-    mensaje += `\n\n📍 *Dirección de entrega en Anserma:* [Escribe aquí tu dirección]`;
-    mensaje += `\n💬 *Método de pago deseado:* [Efectivo / Nequi / Transfiya]`;
+   
 
     // ... (Debajo de donde sumas el Total y el costo del Domicilio al mensaje) ...
 

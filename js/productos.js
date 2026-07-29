@@ -65,7 +65,7 @@ const platosSaborAPueblo = [
 • C/U: $2.000 (Sin bebida)
 • Canasta x7: $12.000 (Sin bebida)
 • Canasta x10: $18.000 (Sin bebida)
-• Canasta x15: $28.000 (🥤 ¡INCLUYE GASEOSA!)`,
+• Canasta x15: $30.000 (🥤 ¡INCLUYE GASEOSA!)`,
     precio: 2000,
     categoria: "Entradas",
     imagen: "img/platos/empanadas.webp"

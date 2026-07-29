@@ -9,10 +9,27 @@ function renderizarMenu() {
     const contenedor = document.getElementById("contenedor-menu");
     if (!contenedor) return;
     
-    contenedor.innerHTML = ""; // Limpiar el contenedor
+    contenedor.innerHTML = "";
 
-    // Pintar cada plato con su foto real
     platosSaborAPueblo.forEach(plato => {
+        // Verificar si el producto tiene variantes/opciones (como las empanadas)
+        let selectorOpcionesHTML = "";
+        let funcionBoton = `agregarAlCarrito(${plato.id})`;
+
+        if (plato.opciones && plato.opciones.length > 0) {
+            selectorOpcionesHTML = `
+                <div class="mt-3">
+                    <label class="block text-xs font-bold text-puebloBlue mb-1">Elige tu presentación:</label>
+                    <select id="select-opcion-${plato.id}" onchange="actualizarPrecioPlato(${plato.id})" class="w-full bg-blue-50 border border-blue-200 text-puebloDark text-xs rounded-lg p-2 font-semibold focus:ring-2 focus:ring-puebloBlue">
+                        ${plato.opciones.map((op, index) => `
+                            <option value="${index}">${op.nombre} - $${op.precio.toLocaleString()} (${op.detalle})</option>
+                        `).join('')}
+                    </select>
+                </div>
+            `;
+            funcionBoton = `agregarOpcionAlCarrito(${plato.id})`;
+        }
+
         contenedor.innerHTML += `
             <div class="bg-white rounded-2xl shadow-md border border-blue-100 flex flex-col justify-between overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1">
                 <div class="h-48 w-full overflow-hidden bg-blue-50 relative">
@@ -25,10 +42,10 @@ function renderizarMenu() {
                     <div>
                         <h3 class="font-bold text-xl text-puebloBlue">${plato.nombre}</h3>
                         <p class="text-gray-600 text-sm mt-2 leading-relaxed">${plato.descripcion}</p>
-                    </div>
+                        ${selectorOpcionesHTML} </div>
                     <div class="flex justify-between items-center mt-5 pt-4 border-t border-blue-50">
-                        <span class="font-extrabold text-2xl text-puebloDark">$${plato.precio.toLocaleString()}</span>
-                        <button onclick="agregarAlCarrito(${plato.id})" 
+                        <span id="precio-display-${plato.id}" class="font-extrabold text-2xl text-puebloDark">$${plato.precio.toLocaleString()}</span>
+                        <button onclick="${funcionBoton}" 
                             class="bg-puebloBlue hover:bg-puebloYellow hover:text-puebloDark text-white font-bold py-2 px-5 rounded-xl text-sm transition-all duration-300 shadow">
                             + Agregar
                         </button>
@@ -37,7 +54,6 @@ function renderizarMenu() {
             </div>
         `;
     });
-
     // Tarjeta de Antojo Directo en el Menú
     contenedor.innerHTML += `
         <div class="bg-puebloDark p-6 rounded-2xl shadow-lg text-white flex flex-col justify-between border-4 border-puebloYellow min-h-[350px]">
@@ -329,6 +345,45 @@ function enviarAntojoEspecial() {
     const mensaje = "¡Hola Sabor a Pueblo! 👋 Tengo un antojo de un plato especial y me gustaría saber si me lo podrían preparar de forma personalizada...";
     const url = `https://api.whatsapp.com/send?phone=573218433983&text=${encodeURIComponent(mensaje)}`;
     window.open(url, '_blank');
+}
+// Actualiza visualmente el precio en la tarjeta cuando cambian la opción del menú desplegable
+function actualizarPrecioPlato(id) {
+    const plato = platosSaborAPueblo.find(p => p.id === id);
+    const select = document.getElementById(`select-opcion-${id}`);
+    const displayPrecio = document.getElementById(`precio-display-${id}`);
+    
+    if (plato && select && displayPrecio) {
+        const opcionSeleccionada = plato.opciones[select.value];
+        displayPrecio.innerText = `$${opcionSeleccionada.precio.toLocaleString()}`;
+    }
+}
+
+// Agrega al carrito la variante específica seleccionada
+function agregarOpcionAlCarrito(id) {
+    const plato = platosSaborAPueblo.find(p => p.id === id);
+    const select = document.getElementById(`select-opcion-${id}`);
+    if (!plato || !select) return;
+
+    const opcion = plato.opciones[select.value];
+    
+    // Generamos un item único para el carrito con el nombre de la variante
+    const itemVariante = {
+        id: `${plato.id}-${select.value}`, // ID compuesto para no mezclar Canasta x7 con Canasta x15
+        nombre: `${plato.nombre} (${opcion.nombre})`,
+        precio: opcion.precio,
+        cantidad: 1
+    };
+
+    const itemExistente = carrito.find(item => item.id === itemVariante.id);
+
+    if (itemExistente) {
+        itemExistente.cantidad += 1;
+    } else {
+        carrito.push(itemVariante);
+    }
+
+    actualizarInterfazCarrito();
+    mostrarAnimacionToast(itemVariante.nombre);
 }
 
 // ==========================================

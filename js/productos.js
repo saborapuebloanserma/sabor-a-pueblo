@@ -60,15 +60,17 @@ const platosSaborAPueblo = [
     {
     id: 8,
     nombre: "Empanadas Crocantes",
-    descripcion: `Deliciosas empanadas crocantes, rellenas de la mejor sazón de la casa.
-
-• C/U: $2.000 (Sin bebida)
-• Canasta x7: $12.000 (Sin bebida)
-• Canasta x10: $18.000 (Sin bebida)
-• Canasta x15: $30.000 (🥤 ¡INCLUYE GASEOSA!)`,
+    descripcion: "Deliciosas empanadas crocantes, rellenas de la mejor sazón de la casa.",
     precio: 2000,
     categoria: "Entradas",
-    imagen: "img/platos/empanadas.webp"
+    imagen: "img/platos/empanadas.webp",
+    // Agregamos las variantes/opciones:
+    opciones: [
+        { nombre: "Unidad (1 emp.)", precio: 2000, detalle: "Sin bebida" },
+        { nombre: "Canasta x7", precio: 12000, detalle: "Sin bebida" },
+        { nombre: "Canasta x10", precio: 18000, detalle: "Sin bebida" },
+        { nombre: "Canasta x15", precio: 30000, detalle: "🥤 ¡Incluye Gaseosa!" }
+    ]
 },
     {
         id: 9,

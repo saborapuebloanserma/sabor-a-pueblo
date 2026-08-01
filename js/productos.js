@@ -53,7 +53,7 @@ const platosSaborAPueblo = [
         id: 7,
         nombre: "Adición Especial",
         descripcion: "Perfecta combinación de torta de carne bien sazonada y arepa caliente. Incluye gaseosa personal",
-        precio: 4000,
+        precio: 5000,
         categoria: "Adiciones",
         imagen: "img/platos/adicion.webp"
     },

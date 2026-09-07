@@ -671,3 +671,40 @@ window.eliminarDelCarrito = eliminarDelCarrito;
 window.enviarPedidoWhatsApp = enviarPedidoWhatsApp;
 window.enviarAntojoEspecial = enviarAntojoEspecial;
 window.cerrarAlertaAntojo = cerrarAlertaAntojo;
+
+/* =========================================================
+   CONTROL DEL MENÚ MÓVIL
+   ========================================================= */
+
+function toggleMenuMovil() {
+    const menu = document.getElementById("menu-mobile");
+    const icono = document.getElementById("menu-icon");
+    const boton = document.getElementById("menu-mobile-button");
+    if (!menu) return;
+
+    const estaOculto = menu.classList.contains("hidden");
+
+    if (estaOculto) {
+        menu.classList.remove("hidden");
+        if (icono) icono.innerText = "✕";
+        if (boton) boton.setAttribute("aria-expanded", "true");
+    } else {
+        menu.classList.add("hidden");
+        if (icono) icono.innerText = "☰";
+        if (boton) boton.setAttribute("aria-expanded", "false");
+    }
+}
+
+function cerrarMenuMovil() {
+    const menu = document.getElementById("menu-mobile");
+    const icono = document.getElementById("menu-icon");
+    const boton = document.getElementById("menu-mobile-button");
+
+    if (menu) menu.classList.add("hidden");
+    if (icono) icono.innerText = "☰";
+    if (boton) boton.setAttribute("aria-expanded", "false");
+}
+
+// Exposición global para soportar eventos onclick inline
+window.toggleMenuMovil = toggleMenuMovil;
+window.cerrarMenuMovil = cerrarMenuMovil;

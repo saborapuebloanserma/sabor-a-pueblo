@@ -1,223 +1,1597 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
+    <!-- =====================================================
+         CONFIGURACIÓN GENERAL
+         ===================================================== -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sabor a Pueblo — comida casera preparada bajo pedido en Anserma, Caldas.">
+    <meta name="theme-color" content="#0D2C4A">
+
     <title>Sabor a Pueblo | Anserma Caldas | Sabor que enamora</title>
+
+
+    <!-- =====================================================
+         TAILWIND CSS
+         ===================================================== -->
+
     <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <!-- =====================================================
+         SABOR A PUEBLO — DESIGN SYSTEM
+         ===================================================== -->
+
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/promociones.css">
+
+
+    <!-- =====================================================
+         CONFIGURACIÓN DE TAILWIND
+         ===================================================== -->
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        puebloBlue: '#1D71B8',     /* Azul del logo */
-                        puebloYellow: '#FBB03B',   /* Amarillo/Naranja del logo */
-                        puebloDark: '#0D2C4A',     /* Azul oscuro premium */
+                        puebloBlue: '#1D71B8',
+                        puebloYellow: '#FBB03B',
+                        puebloDark: '#0D2C4A'
                     }
                 }
             }
-        }
+        };
     </script>
+
+
+    <!-- =====================================================
+         ESTILOS LOCALES
+         ===================================================== -->
+
     <style>
-        /* Animaciones para alertas y logo */
-        #alerta-pueblo { transition: all 0.5s; transform: translateY(100px); opacity: 0; }
-        #alerta-pueblo.mostrar { transform: translateY(0); opacity: 1; }
-        #alerta-antojo.mostrar-antojo { transform: translateY(0); opacity: 1; }
-        
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translate3d(0, -20px, 0); }
-            to { opacity: 1; transform: translate3d(0, 0, 0); }
+
+        /* =================================================
+           SCROLL SUAVE
+           ================================================= */
+
+        html {
+            scroll-behavior: smooth;
         }
-        .animate-logo { animation: fadeInDown 1s ease-out; }
+
+
+        /* =================================================
+           ALERTA PRINCIPAL
+           ================================================= */
+
+        #alerta-pueblo {
+            transition: all 0.5s ease;
+            transform: translateY(100px);
+            opacity: 0;
+        }
+
+        #alerta-pueblo.mostrar {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+
+        /* =================================================
+           ALERTA DE ANTOJO
+           ================================================= */
+
+        #alerta-antojo {
+            transition:
+                transform 0.7s ease,
+                opacity 0.7s ease;
+        }
+
+        #alerta-antojo.mostrar-antojo {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+
+        /* =================================================
+           ANIMACIÓN DEL LOGO
+           ================================================= */
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translate3d(0, -20px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        .animate-logo {
+            animation: fadeInDown 1s ease-out;
+        }
+
+
+        /* =================================================
+           SECCIONES
+           Evita que el navbar tape los títulos.
+           ================================================= */
+
+        section[id],
+        main[id] {
+            scroll-margin-top: 100px;
+        }
+
+
+        /* =================================================
+           HERO
+           ================================================= */
+
+        #inicio {
+            scroll-margin-top: 0;
+        }
+
+
+        /* =================================================
+           VIDEO DEL HERO
+           ================================================= */
+
+        .hero-video {
+            object-position: center;
+        }
+
+
+        /* =================================================
+           NAVBAR SCROLLED
+           ================================================= */
+
+        #navbar.navbar-scrolled {
+            background: rgba(13, 44, 74, 0.96);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+
+        /* =================================================
+           BADGE DEL CARRITO
+           ================================================= */
+
+        #navbar-carrito-badge {
+            line-height: 1;
+        }
+
+
+        /* =================================================
+           ACCESIBILIDAD
+           ================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .animate-logo {
+                animation: none;
+            }
+        }
+
     </style>
+
 </head>
-<body class="bg-blue-50 text-puebloDark font-sans min-h-screen flex flex-col justify-between">
 
-    <div class="bg-puebloYellow text-puebloDark text-center py-2 px-4 text-xs md:text-sm font-bold shadow-md z-50">
-       🎉 ¡PROMO DE BIENVENIDA! Por compras superiores a $25.000 te incluimos una Adición Especial mini. ¡Pide tu antojo ya!
-    </div>
 
-    <header class="bg-puebloBlue text-white text-center py-10 px-4 shadow-lg">
-        <div class="max-w-4xl mx-auto flex flex-col items-center">
-            <img src="img/LOGO_SABOR_A_PUEBLO.webp" alt="Sabor a Pueblo Logo" class="h-36 md:h-44 w-auto mb-4 animate-logo drop-shadow-lg">
-            <p class="mt-1 text-base md:text-lg italic text-blue-100 font-medium">"Sabor que enamora, tradición que perdura"</p>
-        </div>
-    </header>
+<body class="bg-slate-50 text-gray-800 min-h-screen">
 
-    <main class="max-w-6xl mx-auto p-4 w-full flex-grow mt-6">
-        <h2 class="text-2xl md:text-3xl font-extrabold text-puebloBlue border-b-4 border-puebloYellow pb-2 mb-8 flex items-center gap-2">
-            👨‍🍳 Nuestra Carta
-        </h2>
-        
-        <div id="contenedor-menu" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <p class="text-gray-500 italic text-center col-span-full">Cargando sazón del pueblo...</p>
-        </div>
-    </main>
 
-    <div id="alerta-pueblo" class="fixed bottom-5 left-5 right-5 md:right-auto md:max-w-sm bg-puebloDark text-blue-50 px-4 py-3 rounded-xl shadow-2xl flex items-center space-x-3 border border-puebloBlue/30 z-50">
-        <img src="img/STIKERS_SABOR_A_PUEBLO.webp" class="h-10 w-10 rounded-full border-2 border-puebloYellow object-cover">
-        <span id="texto-alerta" class="text-sm font-medium">✨ Preparando los mejores sabores...</span>
-    </div>
+    <!-- =====================================================
+         NAVBAR — SABOR A PUEBLO
+         ===================================================== -->
 
-    <div id="alerta-antojo" class="fixed bottom-24 right-5 left-5 md:left-auto md:max-w-sm bg-puebloYellow text-puebloDark p-5 rounded-2xl shadow-2xl border-4 border-white transform translate-y-32 opacity-0 transition-all duration-700 ease-out z-50 hidden">
-        <div class="flex items-start space-x-3">
-            <span class="text-3xl">👨‍🍳</span>
-            <div class="flex-1">
-                <h4 class="font-bold text-lg leading-tight">¿Tienes un antojo especial?</h4>
-                <p class="text-xs mt-1 text-puebloDark/85">¡Cuéntanos! En Sabor a Pueblo nos encanta complacerte. Escríbenos y personalizamos tu plato como a ti te gusta.</p>
-                <button onclick="enviarAntojoEspecial()" class="mt-3 bg-puebloDark text-white hover:bg-puebloBlue font-bold py-1.5 px-4 rounded-full text-xs shadow-md transition-all">
-                    💬 ¡Hagámoslo realidad!
+    <nav
+        id="navbar"
+        class="
+            fixed
+            top-0
+            left-0
+            right-0
+            z-[100]
+            bg-puebloDark
+            shadow-lg
+            border-b
+            border-puebloYellow/20
+            transition-all
+            duration-500
+        "
+        aria-label="Navegación principal"
+    >
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="flex items-center justify-between h-20 md:h-24">
+
+
+                <!-- =========================================
+                     LOGO
+                     ========================================= -->
+
+                <a
+                    href="#inicio"
+                    class="flex items-center shrink-0 group"
+                    aria-label="Sabor a Pueblo - Inicio"
+                >
+
+                    <img
+                        src="assets/img/logo/LOGO_SABOR_A_PUEBLO.webp"
+                        alt="Sabor a Pueblo"
+                        class="
+                            h-12
+                            md:h-14
+                            w-auto
+                            object-contain
+                            transition-transform
+                            duration-300
+                            group-hover:scale-105
+                        "
+                    >
+
+                </a>
+
+
+                <!-- =========================================
+                     NAVEGACIÓN DESKTOP
+                     ========================================= -->
+
+                <div class="hidden lg:flex items-center gap-8">
+
+                    <a href="#inicio" class="nav-link">
+                        Inicio
+                    </a>
+
+                    <a href="#nosotros" class="nav-link">
+                        Nuestra historia
+                    </a>
+
+                    <a href="#carta" class="nav-link">
+                        Nuestra carta
+                    </a>
+
+                    <a href="#contacto" class="nav-link">
+                        Contacto
+                    </a>
+
+                </div>
+
+
+                <!-- =========================================
+                     ACCIONES DESKTOP
+                     ========================================= -->
+
+                <div class="hidden lg:flex items-center gap-3">
+
+
+                    <!-- CARRITO -->
+
+                    <button
+                        type="button"
+                        onclick="abrirModalCarrito()"
+                        class="
+                            navbar-cart
+                            relative
+                            w-11
+                            h-11
+                            rounded-full
+                            flex
+                            items-center
+                            justify-center
+                            transition-all
+                            duration-300
+                        "
+                        aria-label="Abrir carrito"
+                    >
+
+                        <span class="text-xl">
+                            🛒
+                        </span>
+
+                        <span
+                            id="navbar-carrito-badge"
+                            class="
+                                absolute
+                                -top-1
+                                -right-1
+                                min-w-5
+                                h-5
+                                px-1
+                                rounded-full
+                                bg-puebloYellow
+                                text-puebloDark
+                                text-[10px]
+                                font-black
+                                items-center
+                                justify-center
+                                hidden
+                            "
+                        >
+                            0
+                        </span>
+
+                    </button>
+
+
+                    <!-- CTA WHATSAPP -->
+
+                    <a
+                        href="https://wa.me/573218433983"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="
+                            navbar-cta
+                            inline-flex
+                            items-center
+                            gap-2
+                            px-5
+                            py-3
+                            rounded-xl
+                            font-extrabold
+                            text-sm
+                            transition-all
+                            duration-300
+                        "
+                    >
+
+                        <span>
+                            💬
+                        </span>
+
+                        Pedir ahora
+
+                    </a>
+
+                </div>
+
+
+                <!-- =========================================
+                     BOTÓN MENÚ MÓVIL
+                     ========================================= -->
+
+                <button
+                    id="menu-mobile-button"
+                    type="button"
+                    class="
+                        lg:hidden
+                        w-11
+                        h-11
+                        rounded-xl
+                        flex
+                        items-center
+                        justify-center
+                        transition-all
+                        duration-300
+                    "
+                    aria-label="Abrir menú"
+                    aria-expanded="false"
+                    aria-controls="menu-mobile"
+                >
+
+                    <span id="menu-icon" class="text-2xl">
+                        ☰
+                    </span>
+
                 </button>
+
             </div>
-            <button onclick="cerrarAlertaAntojo()" class="text-puebloDark hover:text-red-600 font-bold text-sm p-1">✕</button>
+
         </div>
-    </div>
 
-    <section class="bg-white border-t border-b border-gray-100 py-12 px-4">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
-        
-        <div class="space-y-3">
-            <h3 class="text-xl font-bold text-puebloBlue flex items-center gap-2">
-                🏠 <span>¿Quiénes Somos?</span>
-            </h3>
-            <p class="text-gray-600 leading-relaxed text-sm">
-                En <strong>Sabor a Pueblo nació para llevar a tu mesa el sabor de la cocina de casa.</strong> Preparamos cada pedido especialmente para ti, con ingredientes frescos, recetas tradicionales y ese toque casero que nos recuerda nuestras raíces. Más que vender comida, queremos que cada bocado te haga sentir como en casa.
-    </div>
 
-        <div class="space-y-3">
-    <h3 class="text-xl font-bold text-puebloBlue flex items-center gap-2">
-        📅 <span>Pedidos y Entregas</span>
-    </h3>
+        <!-- ================================================
+             MENÚ MÓVIL
+             ================================================ -->
 
-    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-lg">
-        <p class="text-sm font-bold text-amber-800">
-            👨‍🍳 ¡Preparamos cada pedido especialmente para ti!
-        </p>
+        <div
+            id="menu-mobile"
+            class="
+                lg:hidden
+                overflow-hidden
+                max-h-0
+                opacity-0
+                transition-all
+                duration-500
+            "
+        >
 
-        <p class="text-sm text-amber-700 mt-2 leading-relaxed">
-            En <strong>Sabor a Pueblo</strong> cocinamos bajo pedido para ofrecerte platos frescos, con ingredientes de calidad y el auténtico sabor de la cocina casera.
-        </p>
-    </div>
+            <div class="px-5 pt-4 pb-6 space-y-2 border-t">
 
-    <ul class="text-gray-700 text-sm space-y-3">
-        <li class="flex justify-between border-b pb-2">
-            <span class="font-medium">🛒 Pedidos</span>
-            <span class="font-semibold">Todos los días (preferiblemente en la mañana)</span>
-        </li>
+                <a href="#inicio" class="mobile-nav-link">
+                    🏠 Inicio
+                </a>
 
-        <li class="flex justify-between border-b pb-2">
-            <span class="font-medium">🚚 Entregas</span>
-            <span class="font-semibold">Miércoles a Domingo · 11:00 AM - 10:00 PM</span>
-        </li>
-    </ul>
-</div>
-    </div>
-</section>
+                <a href="#nosotros" class="mobile-nav-link">
+                    ❤️ Nuestra historia
+                </a>
 
-    <footer class="bg-puebloDark text-blue-200/70 text-center py-6 text-xs mt-12 px-4">
-        <img src="img/STIKERS_SABOR_A_PUEBLO.webp" class="h-12 w-12 mx-auto mb-2 rounded-full border-2 border-puebloYellow object-cover">
-        <p class="font-bold text-white text-sm">Sabor a Pueblo</p>
-        <p class="mt-1">Anserma, Caldas | Pedidos: 321 843 3983</p>
-        
-        <p class="mt-3 text-[10px] text-blue-300/50 italic">🍳 Las imágenes de los platos son de carácter ilustrativo y de referencia.</p>
-        
-        <p class="mt-2 text-[10px] text-blue-300/40">&copy; 2026 Sabor a Pueblo. Todos los derechos reservados.</p>
-    </footer>
+                <a href="#carta" class="mobile-nav-link">
+                    🍽️ Nuestra carta
+                </a>
 
-    <div id="barra-carrito" class="fixed bottom-0 left-0 right-0 bg-puebloDark text-white p-4 shadow-2xl z-40 border-t-4 border-puebloYellow hidden">
-        <div class="max-w-4xl mx-auto flex items-center justify-between">
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="abrirModalCarrito()">
-                <span class="text-2xl">🛒</span>
-                <div>
-                    <p class="text-xs text-blue-200">Tu pedido (Toca para ver detalle):</p>
-                    <p class="font-bold text-sm underline decoration-puebloYellow" id="carrito-cantidad">0 platos</p>
-                </div>
+                <a href="#contacto" class="mobile-nav-link">
+                    📞 Contacto
+                </a>
+
+                <a
+                    href="https://wa.me/573218433983"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mobile-cta"
+                >
+                    💬 Pedir por WhatsApp
+                </a>
+
             </div>
-            
-            <div class="flex items-center space-x-4">
-                <div class="text-right">
-                    <p class="text-xs text-blue-200">Subtotal:</p>
-                    <p class="font-extrabold text-lg text-puebloYellow" id="carrito-total">$0</p>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         CONTENEDOR PRINCIPAL
+         ===================================================== -->
+
+    <div id="inicio">
+
+
+        <!-- =================================================
+             HERO
+             ================================================= -->
+
+        <section
+            id="hero"
+            class="
+                relative
+                min-h-[78vh]
+                md:min-h-[82vh]
+                overflow-hidden
+                bg-puebloDark
+                text-white
+            "
+        >
+
+
+            <!-- VIDEO -->
+
+            <video
+                class="
+                    hero-video
+                    absolute
+                    inset-0
+                    w-full
+                    h-full
+                    object-cover
+                "
+                autoplay
+                muted
+                loop
+                playsinline
+                poster="assets/img/hero/PATACONCITOS%20MIX2.webp"
+                aria-hidden="true"
+            >
+
+                <source
+                    src="assets/videos/hero/SABOR%20CASERO%20SIRVIENDOSE.mp4"
+                    type="video/mp4"
+                >
+
+            </video>
+
+
+            <!-- CAPA OSCURA -->
+
+            <div
+                class="
+                    absolute
+                    inset-0
+                    bg-gradient-to-r
+                    from-puebloDark/95
+                    via-puebloDark/75
+                    to-puebloDark/35
+                "
+                aria-hidden="true"
+            ></div>
+
+
+            <!-- CAPA DE PROFUNDIDAD -->
+
+            <div
+                class="
+                    absolute
+                    inset-0
+                    bg-gradient-to-t
+                    from-puebloDark/80
+                    via-transparent
+                    to-puebloDark/30
+                "
+                aria-hidden="true"
+            ></div>
+
+
+            <!-- CONTENIDO -->
+
+            <div
+                class="
+                    relative
+                    z-10
+                    min-h-[78vh]
+                    md:min-h-[82vh]
+                    max-w-7xl
+                    mx-auto
+                    px-6
+                    sm:px-8
+                    lg:px-12
+                    flex
+                    items-center
+                "
+            >
+
+                <div class="max-w-3xl pt-16 md:pt-20 pb-16">
+
+
+                    <!-- ETIQUETA -->
+
+                    <div
+                        class="
+                            inline-flex
+                            items-center
+                            gap-2
+                            bg-white/10
+                            backdrop-blur-md
+                            border
+                            border-white/20
+                            rounded-full
+                            px-4
+                            py-2
+                            mb-6
+                            shadow-lg
+                        "
+                    >
+
+                        <span
+                            class="
+                                w-2.5
+                                h-2.5
+                                rounded-full
+                                bg-puebloYellow
+                                animate-pulse
+                            "
+                        ></span>
+
+                        <span
+                            class="
+                                text-xs
+                                sm:text-sm
+                                font-semibold
+                                tracking-wide
+                                text-white/90
+                            "
+                        >
+                            COCINA CASERA · ANSERMA, CALDAS
+                        </span>
+
+                    </div>
+
+
+                    <!-- TITULAR -->
+
+                    <h1
+                        class="
+                            text-4xl
+                            sm:text-5xl
+                            md:text-6xl
+                            lg:text-7xl
+                            font-black
+                            leading-[0.95]
+                            tracking-tight
+                            drop-shadow-2xl
+                        "
+                    >
+
+                        El sabor de casa
+
+                        <span class="block text-puebloYellow mt-2">
+                            hecho para ti.
+                        </span>
+
+                    </h1>
+
+
+                    <!-- PROPUESTA DE VALOR -->
+
+                    <p
+                        class="
+                            mt-6
+                            max-w-2xl
+                            text-base
+                            sm:text-lg
+                            md:text-xl
+                            leading-relaxed
+                            text-white/90
+                            drop-shadow-lg
+                        "
+                    >
+
+                        Disfruta comida casera preparada bajo pedido,
+                        con ingredientes seleccionados y ese sabor
+                        que nos recuerda nuestras raíces.
+
+                    </p>
+
+
+                    <!-- ESLOGAN -->
+
+                    <p
+                        class="
+                            mt-5
+                            text-base
+                            sm:text-lg
+                            md:text-xl
+                            font-semibold
+                            italic
+                            text-white
+                        "
+                    >
+
+                        Sabor que enamora,
+
+                        <span class="text-puebloYellow">
+                            tradición que perdura.
+                        </span>
+
+                    </p>
+
+
+                    <!-- CTA -->
+
+                    <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+
+                        <a
+                            href="#carta"
+                            class="
+                                group
+                                inline-flex
+                                items-center
+                                justify-center
+                                gap-2
+                                bg-puebloYellow
+                                hover:bg-white
+                                text-puebloDark
+                                font-extrabold
+                                px-7
+                                py-4
+                                rounded-xl
+                                shadow-xl
+                                hover:shadow-2xl
+                                transition-all
+                                duration-300
+                                hover:-translate-y-1
+                            "
+                        >
+
+                            Ver nuestra carta
+
+                            <span class="transition-transform duration-300 group-hover:translate-x-1">
+                                →
+                            </span>
+
+                        </a>
+
+                        <a
+                            href="#nosotros"
+                            class="
+                                inline-flex
+                                items-center
+                                justify-center
+                                gap-2
+                                bg-white/10
+                                hover:bg-white
+                                text-white
+                                hover:text-puebloDark
+                                border
+                                border-white/30
+                                backdrop-blur-md
+                                font-bold
+                                px-7
+                                py-4
+                                rounded-xl
+                                transition-all
+                                duration-300
+                            "
+                        >
+
+                            Conoce Sabor a Pueblo
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- INDICADORES -->
+
+                    <div
+                        class="
+                            mt-10
+                            flex
+                            flex-wrap
+                            items-center
+                            gap-x-6
+                            gap-y-3
+                            text-sm
+                            text-white/80
+                        "
+                    >
+
+                        <span class="flex items-center gap-2">
+                            <span class="text-puebloYellow">✓</span>
+                            Preparado bajo pedido
+                        </span>
+
+                        <span class="flex items-center gap-2">
+                            <span class="text-puebloYellow">✓</span>
+                            Ingredientes seleccionados
+                        </span>
+
+                        <span class="flex items-center gap-2">
+                            <span class="text-puebloYellow">✓</span>
+                            Entregas en Anserma
+                        </span>
+
+                    </div>
+
                 </div>
-                <button onclick="enviarPedidoWhatsApp()" class="bg-puebloYellow hover:bg-white text-puebloDark font-bold py-2 px-4 md:px-5 rounded-xl text-sm transition-all shadow-md">
+
+            </div>
+
+
+            <!-- INDICADOR DE SCROLL -->
+
+            <a
+                href="#carta"
+                class="
+                    absolute
+                    bottom-6
+                    left-1/2
+                    -translate-x-1/2
+                    z-20
+                    hidden
+                    md:flex
+                    flex-col
+                    items-center
+                    gap-2
+                    text-white/60
+                    hover:text-white
+                    transition-colors
+                "
+                aria-label="Descubrir nuestra carta"
+            >
+
+                <span class="text-[10px] uppercase tracking-[0.25em]">
+                    Descubre
+                </span>
+
+                <span
+                    class="
+                        w-6
+                        h-10
+                        rounded-full
+                        border
+                        border-white/30
+                        flex
+                        items-start
+                        justify-center
+                        p-1
+                    "
+                >
+
+                    <span
+                        class="
+                            w-1.5
+                            h-1.5
+                            rounded-full
+                            bg-puebloYellow
+                            animate-bounce
+                        "
+                    ></span>
+
+                </span>
+
+            </a>
+
+        </section>
+
+
+        <!-- =================================================
+             CARTA
+             ================================================= -->
+
+        <main
+            id="carta"
+            class="
+                max-w-6xl
+                mx-auto
+                p-4
+                w-full
+                flex-grow
+                mt-6
+            "
+        >
+
+            <h2
+                class="
+                    text-2xl
+                    md:text-3xl
+                    font-extrabold
+                    text-puebloBlue
+                    border-b-4
+                    border-puebloYellow
+                    pb-2
+                    mb-8
+                    flex
+                    items-center
+                    gap-2
+                "
+            >
+
+                👨‍🍳
+
+                <span>
+                    Nuestra Carta
+                </span>
+
+            </h2>
+
+
+            <!-- =============================================
+                 MENÚ DINÁMICO
+                 app.js renderiza aquí los productos.
+                 ============================================= -->
+
+            <div
+                id="contenedor-menu"
+                class="
+                    grid
+                    grid-cols-1
+                    sm:grid-cols-2
+                    lg:grid-cols-3
+                    gap-6
+                "
+            >
+
+                <p class="text-gray-500 italic text-center col-span-full">
+                    Cargando sazón del pueblo...
+                </p>
+
+            </div>
+
+        </main>
+
+
+        <!-- =================================================
+             ALERTA PRINCIPAL
+             ================================================= -->
+
+        <div
+            id="alerta-pueblo"
+            class="
+                fixed
+                bottom-5
+                left-5
+                right-5
+                md:right-auto
+                md:max-w-sm
+                bg-puebloDark
+                text-blue-50
+                px-4
+                py-3
+                rounded-xl
+                shadow-2xl
+                flex
+                items-center
+                space-x-3
+                border
+                border-puebloBlue/30
+                z-50
+            "
+        >
+
+            <img
+                src="assets/img/logo/STIKERS_SABOR_A_PUEBLO.webp"
+                alt="Sabor a Pueblo"
+                class="
+                    h-10
+                    w-10
+                    rounded-full
+                    border-2
+                    border-puebloYellow
+                    object-cover
+                "
+            >
+
+            <span id="texto-alerta" class="text-sm font-medium">
+                ✨ Preparando los mejores sabores...
+            </span>
+
+        </div>
+
+
+        <!-- =================================================
+             ALERTA DE ANTOJO ESPECIAL
+             ================================================= -->
+
+        <div
+            id="alerta-antojo"
+            class="
+                fixed
+                bottom-24
+                right-5
+                left-5
+                md:left-auto
+                md:max-w-sm
+                bg-puebloYellow
+                text-puebloDark
+                p-5
+                rounded-2xl
+                shadow-2xl
+                border-4
+                border-white
+                transform
+                translate-y-32
+                opacity-0
+                transition-all
+                duration-700
+                ease-out
+                z-50
+                hidden
+            "
+        >
+
+            <div class="flex items-start space-x-3">
+
+                <span class="text-3xl">
+                    👨‍🍳
+                </span>
+
+                <div class="flex-1">
+
+                    <h4 class="font-bold text-lg leading-tight">
+                        ¿Tienes un antojo especial?
+                    </h4>
+
+                    <p class="text-xs mt-1 text-puebloDark/85">
+                        ¡Cuéntanos!
+                        En Sabor a Pueblo nos encanta complacerte.
+                        Escríbenos y personalizamos tu plato como a ti te gusta.
+                    </p>
+
+                    <button
+                        type="button"
+                        onclick="enviarAntojoEspecial()"
+                        class="
+                            mt-3
+                            bg-puebloDark
+                            text-white
+                            hover:bg-puebloBlue
+                            font-bold
+                            py-1.5
+                            px-4
+                            rounded-full
+                            text-xs
+                            shadow-md
+                            transition-all
+                        "
+                    >
+                        💬 ¡Hagámoslo realidad!
+                    </button>
+
+                </div>
+
+                <button
+                    type="button"
+                    onclick="cerrarAlertaAntojo()"
+                    class="text-puebloDark hover:text-red-600 font-bold text-sm p-1"
+                    aria-label="Cerrar"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             INFORMACIÓN DEL NEGOCIO
+             ================================================= -->
+
+        <section
+            id="nosotros"
+            class="
+                bg-white
+                border-t
+                border-b
+                border-gray-100
+                py-12
+                px-4
+            "
+        >
+
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+
+
+                <!-- QUIÉNES SOMOS -->
+
+                <div class="space-y-3">
+
+                    <h3 class="text-xl font-bold text-puebloBlue flex items-center gap-2">
+                        🏠
+                        <span>¿Quiénes Somos?</span>
+                    </h3>
+
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        En <strong>Sabor a Pueblo</strong> nacimos para llevar a tu mesa
+                        el sabor de la cocina de casa.
+                        Preparamos cada pedido especialmente para ti, con ingredientes frescos,
+                        recetas tradicionales y ese toque casero que nos recuerda nuestras raíces.
+                        Más que vender comida, queremos que cada bocado te haga sentir como en casa.
+                    </p>
+
+                </div>
+
+
+                <!-- PEDIDOS Y ENTREGAS -->
+
+                <div id="pedidos" class="space-y-3">
+
+                    <h3 class="text-xl font-bold text-puebloBlue flex items-center gap-2">
+                        📅
+                        <span>Pedidos y Entregas</span>
+                    </h3>
+
+                    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-lg">
+
+                        <p class="text-sm font-bold text-amber-800">
+                            👨‍🍳 ¡Preparamos cada pedido especialmente para ti!
+                        </p>
+
+                        <p class="text-sm text-amber-700 mt-2 leading-relaxed">
+                            En <strong>Sabor a Pueblo</strong> cocinamos bajo pedido para ofrecerte
+                            platos frescos, con ingredientes de calidad y el auténtico sabor de la cocina casera.
+                        </p>
+
+                    </div>
+
+                    <ul class="text-gray-700 text-sm space-y-3">
+
+                        <li class="flex justify-between border-b pb-2 gap-4">
+                            <span class="font-medium">🛒 Pedidos</span>
+                            <span class="font-semibold text-right">
+                                Todos los días (preferiblemente en la mañana)
+                            </span>
+                        </li>
+
+                        <li class="flex justify-between border-b pb-2 gap-4">
+                            <span class="font-medium">🚚 Entregas</span>
+                            <span class="font-semibold text-right">
+                                Miércoles a Domingo · 11:00 AM - 10:00 PM
+                            </span>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CONTACTO
+             ================================================= -->
+
+        <section id="contacto" class="bg-slate-50 py-12 px-4">
+
+            <div class="max-w-6xl mx-auto">
+
+                <div class="bg-white rounded-2xl shadow-soft p-6 md:p-8 border border-gray-100">
+
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+
+                        <div>
+
+                            <p class="text-sm font-bold uppercase tracking-wider text-puebloBlue">
+                                ¿Tienes un antojo?
+                            </p>
+
+                            <h2 class="mt-1 text-2xl md:text-3xl font-extrabold text-puebloDark">
+                                Hablemos y prepara tu pedido.
+                            </h2>
+
+                            <p class="mt-2 text-sm text-gray-600">
+                                Estamos en Anserma, Caldas. Escríbenos directamente por WhatsApp.
+                            </p>
+
+                        </div>
+
+                        <a
+                            href="https://wa.me/573218433983"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="
+                                inline-flex
+                                items-center
+                                justify-center
+                                gap-2
+                                bg-puebloYellow
+                                hover:bg-puebloBlue
+                                hover:text-white
+                                text-puebloDark
+                                font-extrabold
+                                px-6
+                                py-3
+                                rounded-xl
+                                transition-all
+                                duration-300
+                                shadow-md
+                                shrink-0
+                            "
+                        >
+                            💬 Escribir por WhatsApp
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
+
+        <footer class="bg-puebloDark text-blue-200/70 text-center py-6 text-xs mt-12 px-4">
+
+            <img
+                src="assets/img/logo/STIKERS_SABOR_A_PUEBLO.webp"
+                alt="Sabor a Pueblo"
+                class="
+                    h-12
+                    w-12
+                    mx-auto
+                    mb-2
+                    rounded-full
+                    border-2
+                    border-puebloYellow
+                    object-cover
+                "
+            >
+
+            <p class="font-bold text-white text-sm">
+                Sabor a Pueblo
+            </p>
+
+            <p class="mt-1">
+                Anserma, Caldas |
+                <a href="tel:+573218433983" class="hover:text-white transition-colors">
+                    Pedidos: 321 843 3983
+                </a>
+            </p>
+
+            <p class="mt-3 text-[10px] text-blue-300/50 italic">
+                🍳 Las imágenes de los platos son de carácter ilustrativo y de referencia.
+            </p>
+
+            <p class="mt-2 text-[10px] text-blue-300/40">
+                &copy; 2026 Sabor a Pueblo. Todos los derechos reservados.
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <!-- =================================================
+         BARRA DEL CARRITO
+         ================================================= -->
+
+    <div
+        id="barra-carrito"
+        class="
+            fixed
+            bottom-0
+            left-0
+            right-0
+            bg-puebloDark
+            text-white
+            p-4
+            shadow-2xl
+            z-40
+            border-t-4
+            border-puebloYellow
+            hidden
+        "
+    >
+
+        <div class="max-w-4xl mx-auto flex items-center justify-between gap-4">
+
+            <!-- INFORMACIÓN -->
+
+            <div
+                class="flex items-center space-x-3 cursor-pointer"
+                onclick="abrirModalCarrito()"
+            >
+
+                <span class="text-2xl">
+                    🛒
+                </span>
+
+                <div>
+
+                    <p class="text-xs text-blue-200">
+                        Tu pedido (Toca para ver detalle):
+                    </p>
+
+                    <p
+                        id="carrito-cantidad"
+                        class="
+                            font-bold
+                            text-sm
+                            underline
+                            decoration-puebloYellow
+                        "
+                    >
+                        0 platos
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOTAL Y ACCIONES -->
+
+            <div class="flex items-center space-x-4">
+
+                <div class="text-right">
+
+                    <p class="text-xs text-blue-200">
+                        Total:
+                    </p>
+
+                    <p
+                        id="carrito-total"
+                        class="
+                            font-extrabold
+                            text-lg
+                            text-puebloYellow
+                        "
+                    >
+                        $0
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    onclick="enviarPedidoWhatsApp()"
+                    class="
+                        bg-puebloYellow
+                        hover:bg-white
+                        text-puebloDark
+                        font-bold
+                        py-2
+                        px-4
+                        md:px-5
+                        rounded-xl
+                        text-sm
+                        transition-all
+                        shadow-md
+                    "
+                >
                     🟢 Pedir ya
                 </button>
-                <button onclick="abrirModalCarrito()" class="hidden md:inline-block text-xs text-blue-300 hover:text-white underline">
+
+                <button
+                    type="button"
+                    onclick="abrirModalCarrito()"
+                    class="
+                        text-xs
+                        text-blue-300
+                        hover:text-white
+                        underline
+                        cursor-pointer
+                    "
+                >
                     Ver Detalle
                 </button>
+
             </div>
+
         </div>
+
     </div>
 
-    <div id="modal-carrito" class="fixed inset-0 bg-black/60 z-50 flex items-end md:items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-white w-full md:max-w-md rounded-t-3xl md:rounded-2xl p-6 shadow-2xl transform translate-y-full md:translate-y-0 md:scale-95 transition-transform duration-300 max-h-[85vh] flex flex-col justify-between">
-            
+
+    <!-- =================================================
+         MODAL DEL CARRITO
+         ================================================= -->
+
+    <div
+        id="modal-carrito"
+        class="
+            fixed
+            inset-0
+            bg-black/60
+            z-50
+            flex
+            items-end
+            md:items-center
+            justify-center
+            opacity-0
+            pointer-events-none
+            transition-opacity
+            duration-300
+        "
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="titulo-carrito"
+    >
+
+        <div
+            class="
+                bg-white
+                w-full
+                md:max-w-md
+                rounded-t-3xl
+                md:rounded-2xl
+                p-6
+                shadow-2xl
+                transform
+                translate-y-full
+                md:translate-y-0
+                md:scale-95
+                transition-transform
+                duration-300
+                max-h-[85vh]
+                flex
+                flex-col
+                justify-between
+            "
+        >
+
+            <!-- CABECERA -->
+
             <div class="flex justify-between items-center border-b pb-3 mb-4">
-                <h3 class="text-xl font-bold text-puebloDark flex items-center gap-2">
+
+                <h3
+                    id="titulo-carrito"
+                    class="
+                        text-xl
+                        font-bold
+                        text-puebloDark
+                        flex
+                        items-center
+                        gap-2
+                    "
+                >
                     🛒 Tu Pedido
                 </h3>
-                <button onclick="cerrarModalCarrito()" class="text-gray-400 hover:text-red-500 font-bold text-xl p-2">✕</button>
+
+                <button
+                    type="button"
+                    onclick="cerrarModalCarrito()"
+                    class="
+                        text-gray-400
+                        hover:text-red-500
+                        font-bold
+                        text-xl
+                        p-2
+                    "
+                    aria-label="Cerrar carrito"
+                >
+                    ✕
+                </button>
+
             </div>
 
-            <div id="lista-carrito-detalles" class="overflow-y-auto flex-grow space-y-4 pr-1 my-2 max-h-[45vh]">
-                </div>
 
-           <div class="border-t pt-4 mt-4 space-y-3">
+            <!-- LISTA -->
+
+            <div
+                id="lista-carrito-detalles"
+                class="
+                    overflow-y-auto
+                    flex-grow
+                    space-y-4
+                    pr-1
+                    my-2
+                    max-h-[45vh]
+                "
+            ></div>
+
+
+            <!-- RESUMEN -->
+
+            <div class="border-t pt-4 mt-4 space-y-3">
+
+                <!-- SUBTOTAL -->
+
                 <div class="flex justify-between items-center text-sm">
                     <span class="text-gray-500">Subtotal platos:</span>
                     <span id="modal-subtotal" class="font-bold text-gray-700">$0</span>
                 </div>
-                
+
+
+                <!-- DOMICILIO -->
+
                 <div class="flex justify-between items-center text-sm">
                     <span class="text-gray-500">Domicilio:</span>
                     <span id="modal-domicilio-valor" class="font-bold text-puebloBlue">$0</span>
                 </div>
 
+
+                <!-- TOTAL -->
+
                 <div class="flex justify-between items-center border-t pt-2">
-                    <span class="text-gray-800 font-extrabold text-base">Total a pagar:</span>
-                    <span id="modal-total" class="font-extrabold text-2xl text-puebloBlue">$0</span>
+                    <span class="text-gray-800 font-extrabold text-base">
+                        Total a pagar:
+                    </span>
+                    <span id="modal-total" class="font-extrabold text-2xl text-puebloBlue">
+                        $0
+                    </span>
                 </div>
 
-                <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 my-3 text-xs text-blue-800 flex items-start gap-2">
-    <span>💡</span>
-    <p>
-        <strong>Recuerda:</strong> Preparamos tu comida con amor y bajo pedido para garantizar la mejor frescura.
-    </p>
-</div>
 
-<div class="bg-gray-50 rounded-lg p-3 my-4 border border-gray-200">
-    <h4 class="text-xs font-bold text-gray-700 uppercase tracking-wider mb-2 flex items-center gap-1">
-        💳 Medios de Pago Autorizados
-    </h4>
-    <div class="grid grid-cols-1 gap-2 text-xs text-gray-600">
-        
-        <div class="bg-white p-2.5 rounded border border-gray-100 shadow-sm">
-            <span class="font-semibold text-gray-800 block">💵 Efectivo</span>
-            <span class="text-gray-500 text-[11px]">Si pagas en efectivo, indícanos en WhatsApp si requieres devuelta y de cuánto.</span>
-        </div>
+                <!-- AVISO -->
 
-        <div class="bg-white p-2.5 rounded border border-gray-100 shadow-sm">
-            <div class="flex justify-between items-center mb-1">
-                <span class="font-semibold text-puebloBlue">📱 Transferencia (Banco Cooprocal)</span>
-                <span class="text-[10px] text-green-600 bg-green-50 px-1.5 py-0.5 rounded font-bold">Activo</span>
+                <div
+                    class="
+                        bg-blue-50
+                        border
+                        border-blue-200
+                        rounded-lg
+                        p-3
+                        my-3
+                        text-xs
+                        text-blue-800
+                        flex
+                        items-start
+                        gap-2
+                    "
+                >
+                    <span>💡</span>
+                    <p>
+                        <strong>Recuerda:</strong>
+                        Preparamos tu comida con amor y bajo pedido para garantizar la mejor frescura.
+                    </p>
+                </div>
+
+
+                <!-- MÉTODOS DE PAGO -->
+
+                <div class="space-y-2">
+
+                    <!-- EFECTIVO -->
+
+                    <div class="bg-white p-2.5 rounded border border-gray-100 shadow-sm">
+                        <span class="font-semibold text-gray-800 block">
+                            💵 Efectivo
+                        </span>
+                        <span class="text-gray-500 text-[11px]">
+                            Si pagas en efectivo, indícanos en WhatsApp si requieres devuelta y de cuánto.
+                        </span>
+                    </div>
+
+
+                    <!-- TRANSFERENCIA -->
+
+                    <div class="bg-white p-2.5 rounded border border-gray-100 shadow-sm">
+
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="font-semibold text-puebloBlue">
+                                📱 Transferencia (Banco Cooprocal)
+                            </span>
+                            <span class="text-[10px] text-green-600 bg-green-50 px-1.5 py-0.5 rounded font-bold">
+                                Activo
+                            </span>
+                        </div>
+
+                        <p class="text-gray-700 font-medium">
+                            Llave:
+                            <code class="bg-gray-100 px-1 rounded text-red-600 font-mono">
+                                1054867286
+                            </code>
+                        </p>
+
+                        <span class="text-gray-400 text-[11px] block mt-0.5">
+                            A nombre de: Nicol Alzate - Banco Cooprocal
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACCIONES -->
+
+                <div class="grid grid-cols-2 gap-3 pt-2">
+
+                    <button
+                        type="button"
+                        onclick="vaciarCarrito()"
+                        class="
+                            border
+                            border-red-200
+                            text-red-500
+                            hover:bg-red-50
+                            py-3
+                            rounded-xl
+                            text-xs
+                            font-bold
+                            transition-all
+                        "
+                    >
+                        🗑️ Vaciar Todo
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="enviarPedidoWhatsApp()"
+                        class="
+                            bg-puebloYellow
+                            hover:bg-puebloBlue
+                            hover:text-white
+                            text-puebloDark
+                            font-bold
+                            py-3
+                            rounded-xl
+                            text-xs
+                            transition-all
+                            shadow
+                            text-center
+                        "
+                    >
+                        🟢 Confirmar por WhatsApp
+                    </button>
+
+                </div>
+
             </div>
-            <p class="text-gray-700 font-medium">Llave: <code class="bg-gray-100 px-1 rounded text-red-600 font-mono">1054867286</code></p>
-            <span class="text-gray-400 text-[11px] block mt-0.5">A nombre de: Nicol Alzate - Banco Cooprocal</span>
+
         </div>
 
     </div>
-</div>
-                
-                <div class="grid grid-cols-2 gap-3 pt-2">
-                    <button onclick="vaciarCarrito()" class="border border-red-200 text-red-500 hover:bg-red-50 py-3 rounded-xl text-xs font-bold transition-all">
-                        🗑️ Vaciar Todo
-                    </button>
-                    <button onclick="enviarPedidoWhatsApp()" class="bg-puebloYellow hover:bg-puebloBlue hover:text-white text-puebloDark font-bold py-3 rounded-xl text-xs transition-all shadow text-center">
-                        🟢 Confirmar por WhatsApp
-                    </button>
-                </div>
-            </div>
-  <script src="js/productos.js"></script>
-    <script src="js/app.js"></script>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <!-- Primero: catálogo de productos -->
+    <script src="assets/js/productos.js"></script>
+
+    <!-- Segundo: lógica de la aplicación -->
+    <script src="assets/js/app.js"></script>
+
+    <!-- Tercero: Promociones -->
+    <script src="assets/js/promociones.js"></script>
+
 </body>
+
 </html>

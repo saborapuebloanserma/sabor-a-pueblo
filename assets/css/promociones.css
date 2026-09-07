@@ -1,0 +1,715 @@
+/* ============================================================
+   SABOR A PUEBLO
+   SISTEMA DE PROMOCIONES
+   ============================================================ */
+
+
+/* ============================================================
+   BLOQUEAR SCROLL CUANDO EL MODAL ESTÁ ABIERTO
+   ============================================================ */
+
+body.promocion-open {
+    overflow: hidden;
+}
+
+
+/* ============================================================
+   CONTENEDOR PRINCIPAL
+   ============================================================ */
+
+.promocion-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1rem;
+
+    visibility: hidden;
+    opacity: 0;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+}
+
+
+/* ============================================================
+   ESTADO VISIBLE
+   ============================================================ */
+
+.promocion-modal.is-visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* ============================================================
+   FONDO OSCURO
+   ============================================================ */
+
+.promocion-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        rgba(5, 18, 30, 0.78);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+}
+
+
+/* ============================================================
+   VENTANA
+   ============================================================ */
+
+.promocion-dialog {
+    position: relative;
+
+    width: min(
+        100%,
+        900px
+    );
+
+    max-height: 92vh;
+
+    overflow: hidden;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(320px, 0.95fr);
+
+    background:
+        var(--color-surface);
+
+    border-radius:
+        var(--radius-xl);
+
+    box-shadow:
+        0 30px 100px
+        rgba(0, 0, 0, 0.35);
+
+    transform:
+        translateY(25px)
+        scale(0.97);
+
+    transition:
+        transform 0.4s cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        );
+}
+
+
+.promocion-modal.is-visible
+.promocion-dialog {
+
+    transform:
+        translateY(0)
+        scale(1);
+
+}
+
+
+/* ============================================================
+   BOTÓN CERRAR
+   ============================================================ */
+
+.promocion-close {
+    position: absolute;
+
+    top: 1rem;
+    right: 1rem;
+
+    z-index: 5;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        rgba(13, 44, 74, 0.85);
+
+    color: white;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(0, 0, 0, 0.18);
+
+    transition:
+        all 0.25s ease;
+}
+
+
+.promocion-close:hover {
+
+    background:
+        var(--color-accent);
+
+    color:
+        var(--color-primary-dark);
+
+    transform:
+        rotate(90deg)
+        scale(1.05);
+
+}
+
+
+.promocion-close span {
+
+    font-size:
+        1.7rem;
+
+    line-height:
+        1;
+
+}
+
+
+/* ============================================================
+   IMAGEN
+   ============================================================ */
+
+.promocion-image-wrapper {
+
+    position: relative;
+
+    min-height: 520px;
+
+    background:
+        var(--color-primary-dark);
+
+    overflow: hidden;
+
+}
+
+
+.promocion-image-wrapper::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(13, 44, 74, 0.18),
+            transparent 45%
+        );
+
+    pointer-events: none;
+
+}
+
+
+.promocion-image {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+}
+
+
+/* ============================================================
+   CONTENIDO
+   ============================================================ */
+
+.promocion-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding:
+        3rem 2.75rem;
+
+}
+
+
+/* ============================================================
+   BADGE
+   ============================================================ */
+
+.promocion-badge {
+
+    display: inline-flex;
+
+    align-self: flex-start;
+
+    margin-bottom: 1rem;
+
+    padding:
+        0.45rem 0.8rem;
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(251, 176, 59, 0.15);
+
+    color:
+        #A85E00;
+
+    font-size:
+        0.72rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.06em;
+
+}
+
+
+/* ============================================================
+   TÍTULO
+   ============================================================ */
+
+.promocion-title {
+
+    margin:
+        0 0 0.75rem;
+
+    color:
+        var(--color-primary-dark);
+
+    font-size:
+        clamp(
+            1.8rem,
+            4vw,
+            2.7rem
+        );
+
+    line-height:
+        1.05;
+
+    font-weight:
+        900;
+
+}
+
+
+/* ============================================================
+   SUBTÍTULO
+   ============================================================ */
+
+.promocion-subtitle {
+
+    margin:
+        0 0 1rem;
+
+    color:
+        var(--color-primary);
+
+    font-size:
+        1.05rem;
+
+    font-weight:
+        800;
+
+}
+
+
+/* ============================================================
+   DESCRIPCIÓN
+   ============================================================ */
+
+.promocion-description {
+
+    margin:
+        0 0 1.5rem;
+
+    color:
+        var(--color-text-muted);
+
+    font-size:
+        0.95rem;
+
+    line-height:
+        1.7;
+
+}
+
+
+/* ============================================================
+   FECHA
+   ============================================================ */
+
+.promocion-date {
+
+    display: flex;
+
+    align-items: center;
+
+    gap:
+        0.55rem;
+
+    width:
+        fit-content;
+
+    margin-bottom:
+        1.75rem;
+
+    padding:
+        0.7rem 0.9rem;
+
+    border-radius:
+        var(--radius-md);
+
+    background:
+        var(--color-background);
+
+    color:
+        var(--color-primary-dark);
+
+    font-size:
+        0.9rem;
+
+}
+
+
+/* ============================================================
+   BOTONES
+   ============================================================ */
+
+.promocion-actions {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap:
+        0.75rem;
+
+}
+
+
+.promocion-button {
+
+    width: 100%;
+
+    min-height:
+        52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap:
+        0.5rem;
+
+    border: none;
+
+    border-radius:
+        var(--radius-md);
+
+    padding:
+        0.9rem 1rem;
+
+    font-family:
+        inherit;
+
+    font-size:
+        0.9rem;
+
+    font-weight:
+        800;
+
+    cursor: pointer;
+
+    transition:
+        all 0.25s ease;
+
+}
+
+
+.promocion-button-primary {
+
+    background:
+        var(--color-accent);
+
+    color:
+        var(--color-primary-dark);
+
+    box-shadow:
+        0 10px 25px
+        rgba(251, 176, 59, 0.25);
+
+}
+
+
+.promocion-button-primary:hover {
+
+    background:
+        var(--color-primary-dark);
+
+    color:
+        white;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 14px 30px
+        rgba(13, 44, 74, 0.22);
+
+}
+
+
+.promocion-button-secondary {
+
+    background:
+        transparent;
+
+    color:
+        var(--color-primary-dark);
+
+    border:
+        1px solid
+        var(--color-border);
+
+}
+
+
+.promocion-button-secondary:hover {
+
+    background:
+        var(--color-background);
+
+    border-color:
+        var(--color-primary);
+
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 800px) {
+
+    .promocion-dialog {
+
+        grid-template-columns:
+            1fr;
+
+        width:
+            min(
+                100%,
+                560px
+            );
+
+        max-height:
+            94vh;
+
+        overflow-y:
+            auto;
+
+    }
+
+
+    .promocion-image-wrapper {
+
+        min-height:
+            300px;
+
+        max-height:
+            45vh;
+
+    }
+
+
+    .promocion-content {
+
+        padding:
+            2rem;
+
+    }
+
+}
+
+
+/* ============================================================
+   CELULAR
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+    .promocion-modal {
+
+        padding:
+            0.65rem;
+
+    }
+
+
+    .promocion-dialog {
+
+        width:
+            100%;
+
+        border-radius:
+            1.25rem;
+
+    }
+
+
+    .promocion-image-wrapper {
+
+        min-height:
+            250px;
+
+        max-height:
+            40vh;
+
+    }
+
+
+    .promocion-content {
+
+        padding:
+            1.5rem;
+
+    }
+
+
+    .promocion-title {
+
+        font-size:
+            1.75rem;
+
+    }
+
+
+    .promocion-subtitle {
+
+        font-size:
+            0.95rem;
+
+    }
+
+
+    .promocion-description {
+
+        font-size:
+            0.88rem;
+
+    }
+
+
+    .promocion-close {
+
+        top:
+            0.75rem;
+
+        right:
+            0.75rem;
+
+        width:
+            38px;
+
+        height:
+            38px;
+
+    }
+
+}
+
+
+/* ============================================================
+   CELULARES MUY PEQUEÑOS
+   ============================================================ */
+
+@media (max-width: 360px) {
+
+    .promocion-image-wrapper {
+
+        min-height:
+            210px;
+
+    }
+
+
+    .promocion-content {
+
+        padding:
+            1.25rem;
+
+    }
+
+
+    .promocion-title {
+
+        font-size:
+            1.55rem;
+
+    }
+
+
+    .promocion-description {
+
+        margin-bottom:
+            1rem;
+
+    }
+
+
+    .promocion-date {
+
+        margin-bottom:
+            1rem;
+
+    }
+
+}
+
+
+/* ============================================================
+   ACCESIBILIDAD
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .promocion-modal,
+    .promocion-dialog,
+    .promocion-close,
+    .promocion-button {
+
+        transition:
+            none !important;
+
+    }
+
+}
